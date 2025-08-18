@@ -2,7 +2,7 @@
 
 ## SQL (Sections 1–8: PostgreSQL)
 
-Below you will find a description of the contents and purpose of each of the eight main directories in this portfolio. All SQL code and exercises within sections 1–8 are written for PostgreSQL.
+Below you will find a description of the contents and purpose of each directory in this portfolio. All SQL code and exercises within sections 1–8 are written for PostgreSQL.
 
    **1 Fundamentals**  
    This folder contains introductory SQL queries covering the foundational elements of the language. Scripts in this section demonstrate basic `SELECT` statements, filtering data with `WHERE`, sorting results with `ORDER BY`, using pattern matching with `LIKE` and `ILIKE`, and employing simple aggregate functions such as `COUNT`. These examples are ideal for beginners to gain an understanding of fundamental SQL operations in PostgreSQL.
