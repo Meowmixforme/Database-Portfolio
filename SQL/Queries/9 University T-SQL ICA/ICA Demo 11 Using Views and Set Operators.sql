@@ -73,3 +73,8 @@ SELECT DISTINCT m.title
 FROM movie m
 JOIN movie_keywords mk ON m.movie_id = mk.movie_id;
 GO
+
+-- Drop the view
+
+DROP VIEW IF EXISTS MoviesWithGenreAndCompany;
+GO
