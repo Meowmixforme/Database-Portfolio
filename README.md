@@ -27,3 +27,37 @@ Below you will find a description of the contents and purpose of each directory 
 
    **8 Python and PostgreSQL**  
    This folder bridges SQL and programming by providing example scripts that integrate Python with PostgreSQL. It features Python code (often using libraries such as `psycopg2` or `SQLAlchemy`) to connect to a PostgreSQL database, execute queries, and process results. This section is valuable for those interested in automating database tasks or developing data-driven applications using Python.
+
+   ## 9. University T-SQL ICA
+
+This section contains T-SQL scripts created as part of my second-year university module. Each file demonstrates a specific aspect of T-SQL using the Movies database. The scripts cover a range of advanced querying techniques and features, as outlined below:
+
+1. **ICA Demo 1 Using Aggregate Functions.sql**  
+   Demonstrates the use of aggregate functions such as `SUM`, `AVG`, `COUNT`, `MIN`, and `MAX` in T-SQL to summarise data from the Movies database.
+
+2. **ICA Demo 2 Using the GROUP BY Clause.sql**  
+   Shows how to use the `GROUP BY` clause to group data based on one or more columns, facilitating grouped aggregations and summaries.
+
+3. **ICA Demo 3 Filtering Groups with HAVING.sql**  
+   Illustrates the use of the `HAVING` clause to filter grouped results, allowing you to specify conditions on aggregated data.
+
+4. **ICA Demo 4 Writing Self-Contained Subqueries.sql**  
+   Explores writing self-contained (non-correlated) subqueries within T-SQL, allowing for more complex queries and data extraction.
+
+5. **ICA Demo 5 Writing Correlated Subqueries.sql**  
+   Provides examples of correlated subqueries, where the inner query references columns from the outer query, enabling row-by-row comparisons.
+
+6. **ICA Demo 6 Using the EXISTS Predicate with Subqueries.sql**  
+   Shows how to use the `EXISTS` predicate with subqueries to test for the existence of rows in a related table, commonly used for conditional logic.
+
+7. **ICA Demo 7 Using Views.sql**  
+   Demonstrates the creation and use of SQL views, which are virtual tables representing the result of a stored query.
+
+8. **ICA Demo 8 Using Inline TVFs.sql**  
+   Introduces inline table-valued functions (TVFs), which return a table data type and can be used like regular tables in queries.
+
+9. **ICA Demo 9 Using Derived Tables.sql**  
+   Explains the concept and usage of derived tables (subqueries in the `FROM` clause), useful for structuring complex queries.
+
+10. **ICA Demo 10 Using CTEs.sql**  
+    Covers the use of Common Table Expressions (CTEs), which provide a way to define temporary result sets that can be referenced within a query.
