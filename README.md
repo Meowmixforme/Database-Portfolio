@@ -61,3 +61,27 @@ This section contains T-SQL scripts created as part of my second-year university
 
 10. **ICA Demo 10 Using CTEs.sql**  
     Covers the use of Common Table Expressions (CTEs), which provide a way to define temporary result sets that can be referenced within a query.
+
+11. **ICA Demo 11 Using Views and Set Operators.sql**  
+    Demonstrates how to create views and use set operators (`UNION`, `INTERSECT`, `EXCEPT`) in T-SQL. Examples include building reusable queries for analytics and showing how to compare or combine results across different queries for business scenarios such as talent analytics, content discovery, and production analysis.
+
+12. **ICA Demo 12 Using CTE, Views, Windows Ranking and Partition By.sql**  
+    Illustrates the use of CTEs, views, and advanced window functions (`ROW_NUMBER`, `RANK`, `DENSE_RANK`, `PARTITION BY`, `OVER`) in T-SQL for advanced reporting and analytics. Includes scenarios such as identifying top performers (actors, directors, companies, genres), analyzing movie trends, generating deduplicated lists, and creating ranked summaries for dashboards and business reports.
+
+13. **ICA Demo 13 Pivoting and Grouping Sets.sql**  
+    Demonstrates how to use `GROUPING SETS`, `PIVOT`, and `UNPIVOT` to create flexible summary reports and dashboards. These techniques allow comparison of movie revenue and counts across years, genres, or companies and support generating subtotals and grand totals within a single query for business reporting.
+
+14. **ICA Demo 14 T-SQL Stored Procedures with Parameters.sql**  
+    Explores stored procedures with input, output, and default parameters to encapsulate business logic for repeatable, dynamic queries. Examples include filtering movies by company or genre, running parameterized reports, and counting movies by genre, supporting secure and consistent access patterns for business users and applications.
+
+15. **ICA Demo 15 T-SQL Programming and Stored Procedures.sql**  
+    Shows how to encapsulate business logic and reporting tasks in stored procedures. Includes examples of simple stored procedures for listing top-rated movies, as well as procedures that accept parameters for flexible, dynamic reporting based on year and genre, supporting secure and efficient execution of complex queries.
+
+16. **ICA Demo 16 T-SQL Error Handling.sql**  
+    Highlights the importance of robust error handling in T-SQL. Demonstrates the use of `TRY...CATCH` blocks and structured exception handling within stored procedures to catch errors, log messages, and provide meaningful feedback to users or calling applications, improving reliability and maintainability of business processes.
+
+17. **ICA Demo 17 T-SQL Transactions.sql**  
+    Explains the use of transactions in T-SQL for ensuring data consistency and atomicity. Includes examples of atomic operations using `BEGIN TRANSACTION`, `COMMIT`, and `ROLLBACK`, as well as the use of savepoints for partial rollbacks. Demonstrates how transactions support reliable business processes such as order processing, payroll, and inventory management.
+
+
+                    
