@@ -33,4 +33,17 @@ db.products.insertOne({name: "A T-Shirt", price: 29.99, description: "This is a 
 
 db.products.insertOne({name: "A Computer", price: 1229.99, description: "A high quality computer", details :{cpu: "Intel i7 8770", memory: 32}}) 
 
-// 
+// To delete database entries
+
+db.products.deleteOne({name: "A Computer", price: 1229.99, description: "A high quality computer", details :{cpu: "Intel i7 8770", memory: 32}})
+
+or 
+
+db.products.deleteMany({marker: "toDelete"}) - must have something in common to delete (see next command)
+
+
+// To update a document or many
+
+db.products.updateOne({description: "A high quality computer"}, {$set: {marker: "delete"}}) - atomic operator $set:
+
+db.products.updateMany({}, {$set: {marker: "toDelete"}}) - atomic operator $set:
