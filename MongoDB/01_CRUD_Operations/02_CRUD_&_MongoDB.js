@@ -28,7 +28,7 @@ db.flightData.find({distance: {$gt: 9000}}).pretty()
 
 // Find one
 
-db.flightData.findOne({distance: {$gt: 9000}}) - first flight that matches criteria ( don't use .pretty() )
+db.flightData.findOne({distance: {$gt: 9000}}) - first flight that matches criteria (don't use .pretty() as it exists only on the Cursor)
 
 // Update and Update All
 
@@ -54,4 +54,102 @@ db.flightData.replaceOne({_id: ObjectId('68e8e63ace54075a74cebea4')},{
      "intercontinental": true
    }) 
 
-// Find
+// Add passengers
+
+db.passengers.insertMany([
+  {
+    "name": "Max Schwarzmueller",
+    "age": 29
+  },
+  {
+    "name": "Manu Lorenz",
+    "age": 30
+  },
+  {
+    "name": "Chris Hayton",
+    "age": 35
+  },
+  {
+    "name": "Sandeep Kumar",
+    "age": 28
+  },
+  {
+    "name": "Maria Jones",
+    "age": 30
+  },
+  {
+    "name": "Alexandra Maier",
+    "age": 27
+  },
+  {
+    "name": "Dr. Phil Evans",
+    "age": 47
+  },
+  {
+    "name": "Sandra Brugge",
+    "age": 33
+  },
+  {
+    "name": "Elisabeth Mayr",
+    "age": 29
+  },
+  {
+    "name": "Frank Cube",
+    "age": 41
+  },
+  {
+    "name": "Karandeep Alun",
+    "age": 48
+  },
+  {
+    "name": "Michaela Drayer",
+    "age": 39
+  },
+  {
+    "name": "Bernd Hoftstadt",
+    "age": 22
+  },
+  {
+    "name": "Scott Tolib",
+    "age": 44
+  },
+  {
+    "name": "Freddy Melver",
+    "age": 41
+  },
+  {
+    "name": "Alexis Bohed",
+    "age": 35
+  },
+  {
+    "name": "Melanie Palace",
+    "age": 27
+  },
+  {
+    "name": "Armin Glutch",
+    "age": 35
+  },
+  {
+    "name": "Klaus Arber",
+    "age": 53
+  },
+  {
+    "name": "Albert Twostone",
+    "age": 68
+  },
+  {
+    "name": "Gordon Black",
+    "age": 38
+  }
+])
+
+// To bypass Cursor Object and see full array of documents (gets data in advance)
+
+db.passengers.find().toArray()
+
+// forEach function to get all documents (better for large collection)
+
+db.passengers.find().forEach((passengerData) => {printjson(passengerData)})
+
+// 
+
