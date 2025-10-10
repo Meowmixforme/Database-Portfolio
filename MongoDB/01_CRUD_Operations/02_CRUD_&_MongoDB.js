@@ -29,3 +29,5 @@ db.flightData.find({distance: {$gt: 9000}}).pretty()
 // find one
 
 db.flightData.findOne({distance: {$gt: 9000}}) - first flight that matches criteria ( don't use .pretty() )
+
+  
