@@ -151,5 +151,20 @@ db.passengers.find().toArray()
 
 db.passengers.find().forEach((passengerData) => {printjson(passengerData)})
 
-// 
+// Projection - only include certain fields (name, id is special field and always included) 
 
+db.passengers.find({},{name: 1}).pretty()
+
+// Projection - exlude certain fields (id)
+
+db.passengers.find({},{name: 1, _id: 0}).pretty()
+
+// Embedded documents (nested)
+
+db.flightData.updateMany({}, {$set: {status: {description: "on-time", lastUpdated: "1 hour ago", details: {responsible: "David Lacey"}}}})
+
+// Arrays of data []
+
+db.passengers.updateOne({name: "Albert Twostone"}, {$set: {hobbies: ["sports", "cooking"]}})
+
+// 
