@@ -167,4 +167,14 @@ db.flightData.updateMany({}, {$set: {status: {description: "on-time", lastUpdate
 
 db.passengers.updateOne({name: "Albert Twostone"}, {$set: {hobbies: ["sports", "cooking"]}})
 
-// 
+// Access structured data
+
+db.passengers.findOne({name: "Albert Twostone"}).hobbies
+
+db.passengers.find({hobbies: "sports"}).pretty()
+
+db.flightData.find({"status.description" : "on-time"}).pretty()
+
+db.flightData.find({"status.details.responsible" : "David Lacey"}).pretty()
+
+
