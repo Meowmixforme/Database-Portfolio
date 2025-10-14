@@ -84,4 +84,23 @@ This section contains T-SQL scripts created as part of my second-year university
     Explains the use of transactions in T-SQL for ensuring data consistency and atomicity. Includes examples of atomic operations using `BEGIN TRANSACTION`, `COMMIT`, and `ROLLBACK`, as well as the use of savepoints for partial rollbacks. Demonstrates how transactions support reliable business processes such as order processing, payroll, and inventory management.
 
 
-                    
+## MongoDB (Sections 00–02)
+
+This part of the portfolio combines materials from my university NoSQL (No SQL) module and independent practical work.
+
+**00. University MongoDB Learner's Journal**  
+This section contains my personal learner's journal for the “Introduction to MongoDB”  NoSQL university module, presented in PowerPoint format. The journal documents three weeks of guided study using the Movies database to illustrate MongoDB concepts. Topics covered include:
+- Unit 0: Start Here – Intro to MongoDB
+- Unit 1: Getting Started with MongoDB Atlas
+- Unit 2: Overview of MongoDB and the Document Model
+- Unit 3: Connecting to a MongoDB Database
+- Unit 4: MongoDB CRUD Operations: Insert and Find Documents
+- Unit 5: MongoDB CRUD Operations: Replace and Delete Documents
+- Unit 6: MongoDB CRUD Operations: Modifying Query Results
+- Unit 7: MongoDB Aggregation
+
+**01. CRUD Operations in mongosh**  
+This section introduces essential CRUD (Create, Read, Update, Delete) operations using mongosh, the MongoDB shell. Scripts and examples focus on practical shell usage and syntax (e.g., `insertOne`, `find`, projections, filters, `updateOne`, `updateMany`, `deleteOne`, `deleteMany`) to build familiarity with core document operations.
+
+**02. Schema and Relations**  
+This section explores MongoDB schema design and approaches to modelling relationships between data. It covers embedding vs referencing, document structure design, and considerations for normalisation and denormalisation in scalable systems.
