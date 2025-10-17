@@ -72,3 +72,44 @@ db.citizens.find().pretty()
 
 Many to Many (embedded)
 
+//Sql approach example
+
+use shop
+
+db.products.insertOne({title: "A book", price: 12.99})
+
+db.customers.insertOne({name: "James", age: 43})
+
+db.orders.insertOne({productId: ObjectId('68f19fdba69929fae3cebea7'), customerId: ObjectId('68f19fe1a69929fae3cebea8')}) - Again, Ids taken from our generated customer and product
+
+// Reference
+
+db.orders.drop()
+
+db.customers.updateOne({}, {$set: {orders: [{productId: ObjectId('68f19fdba69929fae3cebea7') , quantity: 2}]}})
+
+// Embedded - disadvantage is data duplication
+
+db.customers.updateOne({}, {$set: {orders: [{title: "A book", price: 12.99, quantity: 2}]}})
+
+shop> db.customers.findOne()
+
+
+// Many to Many References
+
+// Not best method for this example (embedded)
+
+use bookRegistry
+
+db.books.insertOne({name: "My favourite book", authors: [{name: "David Lacey", age: 79}, {name: "Manuel Lor", age: 30}]})
+
+db.authors.insertMany([{name: "David Lacey", age: 79, address: {street: "Main"}}, {name: "Manuel Lor", age: 30, address: {street: "Tree"}}])
+
+// Best method (references) 
+
+db.books.updateOne({}, {$set: {authors: [ObjectId('68f1a3d1a69929fae3cebeab'), ObjectId('68f1a3d1a69929fae3cebeac')]}})
+
+db.books.findOne()
+
+
+
