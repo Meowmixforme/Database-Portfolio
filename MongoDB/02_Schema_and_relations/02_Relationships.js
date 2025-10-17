@@ -10,7 +10,6 @@ db.diseaseSummaries.insertOne({_id: "Summary-james-1", diseases: ["colon cancer"
 
 // two-step lookup to retrieve disease information for a patient
 
-
 var dsid = db.patients.findOne().diseaseSummary
 
 dsid
@@ -25,6 +24,7 @@ db.patients.insertOne({name: "James", age: 43, diseaseSummary: {diseases: ["colo
 
 db.patients.findOne()
 
+
 // One to One References
 
 use cardData
@@ -37,8 +37,8 @@ db.persons.insertOne({name: "James", age: 43, salary: 3000})
 
 db.cars.insertOne({model: "BMW", price: 40000, owner: ObjectId('68f036a92b1fb18d64cebea5')}) - ObjectId is of persons previously inserted
 
-// One to Many (embedded)
 
+// One to Many (embedded)
 
 use support
 
@@ -56,6 +56,19 @@ db.questionThreads.insertOne({creator: "James", question: "How does that all wor
 
 db.questionThreads.findOne()
 
+
 // One to Many References
 
+use cityData
+
+db.cities.insertOne({name: "New York City", coordinates: {lat: 21, lng: 55}})
+
+db.cities.findOne({})
+
+db.citizens.insertMany([{name: "James Smith", cityId: ObjectId('68f19ca1a69929fae3cebea4')}, {name: "John Phillips", cityId: ObjectId('68f19ca1a69929fae3cebea4')}]) - objectId given from inserting New York
+
+db.citizens.find().pretty()
+
+
+Many to Many (embedded)
 
