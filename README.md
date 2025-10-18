@@ -102,7 +102,7 @@ This section contains my personal learner's journal for the “Introduction to M
 **01. CRUD Operations in mongosh**  
 This section introduces essential CRUD (Create, Read, Update, Delete) operations using mongosh, the MongoDB shell. Scripts and examples focus on practical shell usage and syntax (e.g., `insertOne`, `find`, projections, filters, `updateOne`, `updateMany`, `deleteOne`, `deleteMany`) to build familiarity with core document operations.
 
-**02. Schema and Relations**
+**02. Schema and Relations**  
 This section covers document schema design, BSON data types and strategies for modelling relationships in mongosh. Runnable scripts demonstrate mixed vs consistent schemas, numeric types (`NumberInt`, `NumberLong`, `NumberDecimal`), embedding vs referencing, server-side joins with aggregation `$lookup`, and JSON Schema validation using `createCollection`/`collMod` (validator, `validationLevel`, `validationAction`). Examples focus on practical commands (`use`, `insertOne`, `deleteMany`, `db.stats`, `NumberInt`/`NumberDecimal`, `$lookup`, `createCollection` with validator) to build a clear, hands-on understanding of schema choices and their trade-offs. This section is independent of any specific dataset.
 
 
