@@ -113,3 +113,8 @@ db.books.findOne()
 
 
 
+// Joining with $lookup (costs more than embedded document)
+
+use bookRegistry
+
+db.books.aggregate([{$lookup: {from: "authors", localField: "authors", foreignField: "_id", as: "creators"}}]).pretty()
