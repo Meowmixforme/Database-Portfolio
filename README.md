@@ -84,7 +84,7 @@ This section contains T-SQL scripts created as part of my second-year university
     Explains the use of transactions in T-SQL for ensuring data consistency and atomicity. Includes examples of atomic operations using `BEGIN TRANSACTION`, `COMMIT`, and `ROLLBACK`, as well as the use of savepoints for partial rollbacks. Demonstrates how transactions support reliable business processes such as order processing, payroll, and inventory management.
 
 
-## MongoDB (Sections 00–02)
+## MongoDB (Sections 00–16)
 
 This part of the portfolio combines materials from my university NoSQL (No SQL) module and independent practical work.
 
@@ -105,4 +105,6 @@ This section introduces essential CRUD (Create, Read, Update, Delete) operations
 **02. Schema and Relations**  
 This section covers document schema design, BSON data types and strategies for modelling relationships in mongosh. Runnable scripts demonstrate mixed vs consistent schemas, numeric types (`NumberInt`, `NumberLong`, `NumberDecimal`), embedding vs referencing, server-side joins with aggregation `$lookup`, and JSON Schema validation using `createCollection`/`collMod` (validator, `validationLevel`, `validationAction`). Examples focus on practical commands (`use`, `insertOne`, `deleteMany`, `db.stats`, `NumberInt`/`NumberDecimal`, `$lookup`, `createCollection` with validator) to build a clear, hands-on understanding of schema choices and their trade-offs.
 
+**03. Exploring the Shell and Server**
+This section introduces the MongoDB server and shell environment. It explains how to start and configure mongod (using a configuration file such as `mongod.cfg`), how to connect with `mongosh`, and how to inspect server and database state (for example `db.serverStatus()`, `db.stats()`). Practical examples show starting mongod with `--dbpath`/`--logpath`, reading and rotating logs, and basic filesystem considerations for database and log directories. The scripts are runnable in a local or Atlas shell and focus on server startup, configuration and simple operational checks
 
