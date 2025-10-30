@@ -39,3 +39,25 @@ db.hobbies.find().pretty()
 db.hobbies.insertMany([{_id: "yoga", name: "Yoga"}, {_id: "cooking", name: "Cooking"}, {_id: "hiking", name: "Hiking"}], {ordered: false})
 
 
+// writeConcern
+
+use contactData
+
+db.persons.find().pretty()
+
+// w:0 = fast but no aknowledgement, w:1 = default and gives an aknowledgement
+
+db.persons.insertOne({name: "Chrissy", age: 41}, {writeConcern: {w: 1}})
+
+// journal default is false j: false, true adds to journal
+
+db.persons.insertOne({name: "Michael", age: 51}, {writeConcern: {w: 1, j: false}})
+
+db.persons.insertOne({name: "Michaela", age: 51}, {writeConcern: {w: 1, j: true}})
+
+db.persons.insertOne({name: "Aliya", age: 22}, {writeConcern: {w: 1, j: true, wtimeout: 200}})
+
+
+
+
+
