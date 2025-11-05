@@ -28,3 +28,18 @@ db.movies.find({runtime: {$gte: 42}}).pretty() - greater than
 db.movies.find({runtime: {$gte: 42}}).pretty() - greater than or equal
 
 
+// Querying Embedded Fields and Arrays
+
+
+db.movies.find({"rating.average": {$gt: 7}}).pretty()
+
+db.movies.find({genres: "Drama"}).pretty()
+
+db.movies.find({genres: ["Drama"]}).pretty() - just drama genre
+
+// $in and $nin
+
+db.movies.find({runtime: {$in: [30, 42]}}).pretty() - equals
+
+db.movies.find({runtime: {$nin: [30, 42]}}).pretty() does not equal numbers in array
+
