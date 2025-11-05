@@ -94,7 +94,7 @@ This section contains my personal learner's journal for the “Introduction to M
 - Unit 1: Getting Started with MongoDB Atlas
 - Unit 2: Overview of MongoDB and the Document Model
 - Unit 3: Connecting to a MongoDB Database
-- Unit 4: MongoDB CRUD Operations: Insert and Find Documents
+- Unit 4: MongoDB CRUD Operations: Inserting and Importing Documents
 - Unit 5: MongoDB CRUD Operations: Replace and Delete Documents
 - Unit 6: MongoDB CRUD Operations: Modifying Query Results
 - Unit 7: MongoDB Aggregation
