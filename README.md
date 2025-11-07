@@ -94,7 +94,7 @@ This section contains my personal learner's journal for the “Introduction to M
 - Unit 1: Getting Started with MongoDB Atlas
 - Unit 2: Overview of MongoDB and the Document Model
 - Unit 3: Connecting to a MongoDB Database
-- Unit 4: MongoDB CRUD Operations: Insert and Find Documents
+- Unit 4: MongoDB CRUD Operations: Inserting and Importing Documents
 - Unit 5: MongoDB CRUD Operations: Replace and Delete Documents
 - Unit 6: MongoDB CRUD Operations: Modifying Query Results
 - Unit 7: MongoDB Aggregation
@@ -105,6 +105,12 @@ This section introduces essential CRUD (Create, Read, Update, Delete) operations
 **02. Schema and Relations**  
 This section covers document schema design, BSON data types and strategies for modelling relationships in mongosh. Runnable scripts demonstrate mixed vs consistent schemas, numeric types (`NumberInt`, `NumberLong`, `NumberDecimal`), embedding vs referencing, server-side joins with aggregation `$lookup`, and JSON Schema validation using `createCollection`/`collMod` (validator, `validationLevel`, `validationAction`). Examples focus on practical commands (`use`, `insertOne`, `deleteMany`, `db.stats`, `NumberInt`/`NumberDecimal`, `$lookup`, `createCollection` with validator) to build a clear, hands-on understanding of schema choices and their trade-offs.
 
-**03. Exploring the Shell and Server**
-This section introduces the MongoDB server and shell environment. It explains how to start and configure mongod (using a configuration file such as `mongod.cfg`), how to connect with `mongosh`, and how to inspect server and database state (for example `db.serverStatus()`, `db.stats()`). Practical examples show starting mongod with `--dbpath`/`--logpath`, reading and rotating logs, and basic filesystem considerations for database and log directories. The scripts are runnable in a local or Atlas shell and focus on server startup, configuration and simple operational checks
+**03. Exploring the Shell and Server**  
+This section introduces the MongoDB server and shell environment. It explains how to start and configure mongod (using a configuration file such as `mongod.cfg`), how to connect with `mongosh`, and how to inspect server and database state (for example `db.serverStatus()`, `db.stats()`). Practical examples show starting mongod with `--dbpath`/`--logpath`, reading and rotating logs, and basic filesystem considerations for database and log directories. The scripts are runnable in a local or Atlas shell and focus on server startup, configuration and simple operational checks.
+
+**04. CREATE (Inserting and Importing Documents)**  
+This section contains examples and a dataset for creating documents in MongoDB using the shell and import tools. It demonstrates `insertOne`, `insertMany`, and legacy `insert`, and explains ordered vs unordered `insertMany` behaviour when duplicate keys occur. The section also covers `writeConcern` options (`w`, `j`, `wtimeout`) and how they affect acknowledgement and durability. Importing real datasets using `mongoimport` is included with example commands to load `tv-shows.json` into a `movieData.movies` collection, followed by simple verification queries (`db.movies.count()`, `db.movies.find().limit(5).pretty()`).
+
+
+
 
