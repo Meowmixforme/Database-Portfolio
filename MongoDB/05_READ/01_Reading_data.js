@@ -43,3 +43,20 @@ db.movies.find({runtime: {$in: [30, 42]}}).pretty() - equals
 
 db.movies.find({runtime: {$nin: [30, 42]}}).pretty() does not equal numbers in array
 
+// $or and $nor
+
+db.movies.find({$or: [{"rating.average": {$lt: 5}}, {"rating.average": {$gt: 9.3}}]}).pretty() - either
+
+db.movies.find({$nor: [{"rating.average": {$lt: 5}}, {"rating.average": {$gt: 9.3}}]}).pretty() - neither
+
+// $and
+
+db.movies.find({$and: [{"rating.average": {$gt: 9}}, {genres: "Drama"}]}).pretty()
+
+db.movies.find({$and: [{genres: "Drama"} , {genres: "Horror"}]}).pretty()
+
+
+// $ not
+
+db.movies.find({runtime: {$not: {$eq: 60}}}).pretty()
+
