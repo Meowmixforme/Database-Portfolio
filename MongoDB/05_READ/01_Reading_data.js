@@ -60,3 +60,28 @@ db.movies.find({$and: [{genres: "Drama"} , {genres: "Horror"}]}).pretty()
 
 db.movies.find({runtime: {$not: {$eq: 60}}}).pretty()
 
+// Element operators $exists $type
+
+use user
+
+db.users.insertMany([{name: "James", hobbies: [{title: "Guitar", frequency: 4}, {title: "Cooking", frequency: 6}], phone: 012345678}, {name: "Thomas", hobbies: [{title: "Sports", frequency: 3}, {title: "Cooking", frequency: 6}], phone: "098765432", age: 30}])
+
+
+db.users.find({age: {$exists: true, $gte: 30}}).pretty() - only one user has the age field
+
+db.users.insertOne({name: "Gilbert", hobbies: [{title: "Internet forum complainer", frequency: 7}, {title: "Yoga", frequency: 1}], phone: "123456789", age: null})
+
+db.users.find({age: {$exists: true, $ne: null}}).pretty() - only users whose age is not null
+
+
+// $type
+
+db.users.find({phone: {$type: "number"}}).pretty() - only users with phone numbers saved as a number and not a string (double works too)
+
+db.users.find({phone: {$type: ["double", "string"]}}).pretty() - accepts both types
+
+
+
+// Evaluation operators
+
+
