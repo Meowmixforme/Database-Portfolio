@@ -84,4 +84,18 @@ db.users.find({phone: {$type: ["double", "string"]}}).pretty() - accepts both ty
 
 // Evaluation operators
 
+// $regex - search text for patterns
 
+use movieData
+
+db.movies.find({summary: {$regex: /musical/}}).pretty()
+
+// $exp - compare two fields inside of one document and return all documents which match this result
+
+use financialData
+
+db.sales.insertMany([{volume: 100, target: 120}, {volume: 89, target: 80}, {volume: 200, target: 177}])
+
+db.sales.find({$expr: {$gt: ["$volume", "$target"]}}).pretty() - only find documents where volume is greater than target
+
+db.sales.find({$expr: {$gt: [{$cond: {if: {$gte: ["$volume", 190]}, then: {$subtract: ["$volume", 10]}, else: "$volume"}}, "$target"]}}).pretty() - conditional value if vol > 190 difference must be at least 10 (can dynamically change 10 to another number)
