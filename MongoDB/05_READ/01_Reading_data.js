@@ -99,3 +99,17 @@ db.sales.insertMany([{volume: 100, target: 120}, {volume: 89, target: 80}, {volu
 db.sales.find({$expr: {$gt: ["$volume", "$target"]}}).pretty() - only find documents where volume is greater than target
 
 db.sales.find({$expr: {$gt: [{$cond: {if: {$gte: ["$volume", 190]}, then: {$subtract: ["$volume", 10]}, else: "$volume"}}, "$target"]}}).pretty() - conditional value if vol > 190 difference must be at least 10 (can dynamically change 10 to another number)
+
+// Assignment
+
+// import data
+
+mongoimport --file boxoffice.json --db boxOffice --collection movieStarts --jsonArray --drop
+
+use boxOffice
+
+db.movieStarts.find({"meta.rating": { $gt: 9.2}, "meta.runtime": { $lt: 100}}).pretty()
+
+db.movieStarts.find({$or: [{genre: "drama"}, {genre: "action"}]}).pretty()
+
+db.movieStarts.find({$expr: {$gt: ["$visitors", "$expectedVisitors"]}}).pretty()
