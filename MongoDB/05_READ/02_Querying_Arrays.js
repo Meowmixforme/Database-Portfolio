@@ -27,3 +27,22 @@ db.users.find({hobbies: {$elemMatch: {title: "Sports", frequency: {$gte: 3}}}}).
 
 // Assignment
 
+mongoimport boxoffice-extended.json -d boxOffice -c exmoviestarts --drop --jsonArray
+
+use boxOffice
+
+show collections
+
+db.exmoviestarts.find().pretty()
+
+// Find all movies with exactly two genres
+
+db.exmoviestarts.find({genre: {$size: 2}}).pretty()
+
+// Find all movies which aired in 2018
+
+db.exmoviestarts.find({"meta.aired": 2018}).pretty()
+
+// Find all movies that have at least one element in the ratings array that is greater than 8 but lower than 10
+
+db.exmoviestarts.find({ratings: {$elemMatch: {$gt: 8, $lt: 10}}}).pretty()
