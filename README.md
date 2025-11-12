@@ -112,6 +112,8 @@ This section introduces the MongoDB server and shell environment. It explains ho
 **04. CREATE (Inserting and Importing Documents)**  
 This section contains examples and a dataset for creating documents in MongoDB using the shell and import tools. It demonstrates `insertOne`, `insertMany`, and legacy `insert`, and explains ordered vs unordered `insertMany` behaviour when duplicate keys occur. The section also covers `writeConcern` options (`w`, `j`, `wtimeout`) and how they affect acknowledgement and durability. Importing real datasets using `mongoimport` is included with example commands to load `tv-shows.json` into a `movieData.movies` collection, followed by simple verification queries (`db.movies.count()`, `db.movies.find().limit(5).pretty()`).
 
+**05. READ (Querying and Filtering Documents)**  
+This section focuses on reading documents with findOne() and find(), applying comparison operators ($eq, $ne, $lt, $lte, $gte, $in, $nin), logical operators ($or, $nor, $and, $not), and element/type checks ($exists, $type). It demonstrates querying embedded fields ("rating.average"), matching array contents (single-value vs exact array match), using evaluation and pattern operators ($regex, $expr with field-to-field comparisons and conditional logic via $cond), and practical dataset queries (e.g. filtering imported boxOffice data on combined rating/runtime criteria or comparing visitors vs expectedVisitors). These examples build fluency in constructing precise read queries for diverse document shapes.
 
 
 
