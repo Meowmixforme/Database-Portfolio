@@ -38,5 +38,12 @@ db.users.updateOne({name: "Chris"}, {$max: {age: 38}}) - update Chris' age to 38
 
 db.users.updateOne({name: "Chris"}, {$mul: {age: 1.1}}) - will multiply age by a number specified (10%) 3.8 years older
 
-// Removing fields
+// Removing fields $unset
 
+db.users.updateMany({isSporty: true}, {$set: {phone: null}}) - set phone value on all people with the field isSporty: true to null
+
+db.users.updateMany({isSporty: true}, {$unset: {phone: ""}}) - removes phone value on all people with the field isSporty: true
+
+// Renaming fields $rename
+
+db.users.updateMany({}, {$rename: {age: "totalAge"}}) - renames age to totalAge
