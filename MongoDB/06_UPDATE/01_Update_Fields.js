@@ -47,3 +47,22 @@ db.users.updateMany({isSporty: true}, {$unset: {phone: ""}}) - removes phone val
 // Renaming fields $rename
 
 db.users.updateMany({}, {$rename: {age: "totalAge"}}) - renames age to totalAge
+
+// Using upsert()
+
+db.users.updateOne({name: "Maria"}, {$set: {age: 29, hobbies: [{title: "Good food", frequency: 3}], isSporty: true}}) - no match and so no change made
+
+db.users.updateOne({name: "Maria"}, {$set: {age: 29, hobbies: [{title: "Good food", frequency: 3}], isSporty: true}}, {upsert: true}) - updates and inserts if doc doesn't exist
+
+// Assignment
+
+
+db.sports.updateMany({}, {$set: {title: "Football", requiresTeam: true}}, {upsert: true}) - creates one document
+
+db.sports.updateMany({}, {$set: {title: "Running", requiresTeam: false}}, {upsert: true}) - document is changed to Running
+
+db.sports.updateMany({title: "Football"}, {$set: {requiresTeam: true}}, {upsert: true}) - now there are two documents
+
+db.sports.updateMany({requiresTeam: true}, {$set: {minPlayers: 11}}) - if requires team then required players = 11
+
+db.sports.updateMany({requiresTeam: true}, {$inc: {minPlayers: 10}}) - Increment requires ream true by 10 if found
