@@ -20,3 +20,11 @@ db.users.find().pretty()
 
 // Increment and decrement values
 
+db.users.updateOne({name: "Manuel"}, {$inc: {age: 2}}) - Increment Manuel's age by 2 years (can also use -1 to decrement)
+
+db.users.updateOne({name: "Manuel"}, {$inc: {age: 1}, $set: {isSporty: false}}) - Increment Manuel's age by 1 year and add the isSporty flag as false
+
+db.users.updateOne({name: "Manuel"}, {$inc: {age: 2}, $set: {age: 30}}) - Increment Manuel's age by 1 year and set it to 30 - will fail as two operators working on the same field will cause a conflict
+
+
+
