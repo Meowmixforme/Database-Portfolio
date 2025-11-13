@@ -13,3 +13,10 @@ db.users.find({"hobbies.title": "Sports"}).pretty()
 db.users.updateMany({"hobbies.title": "Sports"}, {$set: {isSporty: true}}) - adds new field for all with Sports as hobbies to have new field isSporty
 
 // Update with $set
+
+db.users.updateOne({ _id: ObjectId('69140ce922105c1dd28ad1ae')}, {$set: {age: 40, phone:123456789}}) - update Chris' age and phone number
+
+db.users.find().pretty()
+
+// Increment and decrement values
+
