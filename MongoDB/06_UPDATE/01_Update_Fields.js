@@ -26,5 +26,17 @@ db.users.updateOne({name: "Manuel"}, {$inc: {age: 1}, $set: {isSporty: false}}) 
 
 db.users.updateOne({name: "Manuel"}, {$inc: {age: 2}, $set: {age: 30}}) - Increment Manuel's age by 1 year and set it to 30 - will fail as two operators working on the same field will cause a conflict
 
+// $min, $max and $mul
 
+db.users.updateOne({name: "Chris"}, {$min: {age: 35}}) - update Chris' age to 35
+
+db.users.updateOne({name: "Chris"}, {$min: {age: 38}}) - Will fail to modify (though not throw an error) as $min only changes if new value < than existing value
+
+db.users.updateOne({name: "Chris"}, {$max: {age: 32}}) -  Will fail to modify (though not throw an error) as $max only changes if new value > than existing value
+
+db.users.updateOne({name: "Chris"}, {$max: {age: 38}}) - update Chris' age to 38
+
+db.users.updateOne({name: "Chris"}, {$mul: {age: 1.1}}) - will multiply age by a number specified (10%) 3.8 years older
+
+// Removing fields
 
