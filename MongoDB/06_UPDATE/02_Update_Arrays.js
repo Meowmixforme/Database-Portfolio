@@ -27,3 +27,9 @@ db.users.updateMany({"hobbies.frequency": {$gt: 2}}, {$set: {"hobbies.$[el].good
 
 // Adding elements to an Array
 
+db.users.updateOne({name: "Maria"}, {$push: {hobbies: {title: "Sports", frequency: 2}}}) - add Sports to Maria
+
+db.users.updateOne({name: "Maria"}, {$push: {hobbies: {$each: [{title: "Good Wine", frequency: 7}, {title: "Hiking", frequency: 1}], $sort: {frequency: -1}}}}) - add multiple hobbies as an update to the hobbies Array, sorted descending order by frequency
+
+// Removing elements from an Array
+
