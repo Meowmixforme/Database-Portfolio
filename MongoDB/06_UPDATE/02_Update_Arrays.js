@@ -18,3 +18,12 @@ db.users.find({totalAge: {$gt: 30}})
 
 db.users.updateMany({totalAge: {$gt: 30}}, {$inc: {"hobbies.$[].frequency": -1}}) - update all elements in array to decrease frequency by 1 
 
+// Find and update specific fields
+
+db.users.find({"hobbies.frequency": {$gt: 2}})
+
+db.users.updateMany({"hobbies.frequency": {$gt: 2}}, {$set: {"hobbies.$[el].goodFrequency": true}}, {arrayFilters: [{"el.frequency": {$gt: 2}}]})
+- update all hobbies where frequency > 2 to show add goodFrequency = true
+
+// Adding elements to an Array
+
