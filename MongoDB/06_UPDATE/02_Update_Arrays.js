@@ -33,3 +33,13 @@ db.users.updateOne({name: "Maria"}, {$push: {hobbies: {$each: [{title: "Good Win
 
 // Removing elements from an Array
 
+db.users.updateOne({name: "Maria"}, {$pull: {hobbies: {title: "Hiking"}}}) - Remove hikihng from Maria
+
+db.users.updateOne({name: "Maria"}, {$pull: {hobbies: {title: "Good Wine"}}}) - do the same for Good Wine
+
+db.users.updateOne({name: "Chris"}, {$pop: {hobbies: 1}}) - remove last element of the Array
+
+db.users.updateOne({name: "Chris"}, {$pop: {hobbies: -1}}) - removes first element of an Array
+
+// $addToSet
+
