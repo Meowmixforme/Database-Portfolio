@@ -86,7 +86,7 @@ This section contains T-SQL scripts created as part of my second-year university
 
 ## MongoDB (Sections 00–16)
 
-This part of the portfolio combines materials from my university NoSQL (No SQL) module and independent practical work.
+This part of the portfolio combines materials from my university NoSQL module and independent practical work.
 
 **00. University MongoDB Learner's Journal**  
 This section contains my personal learner's journal for the “Introduction to MongoDB”  NoSQL university module, presented in PowerPoint format. The journal documents three weeks of guided study using the Movies database to illustrate MongoDB concepts. Topics covered include:
