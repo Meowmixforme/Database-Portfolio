@@ -43,3 +43,4 @@ db.users.updateOne({name: "Chris"}, {$pop: {hobbies: -1}}) - removes first eleme
 
 // $addToSet
 
+db.users.updateOne({name: "Maria"}, {$addToSet: {hobbies: {title: "Hiking", frequency: 2}}}) - add to set adds unique values only
