@@ -86,7 +86,7 @@ This section contains T-SQL scripts created as part of my second-year university
 
 ## MongoDB (Sections 00–16)
 
-This part of the portfolio combines materials from my university NoSQL (No SQL) module and independent practical work.
+This part of the portfolio combines materials from my university NoSQL module and independent practical work.
 
 **00. University MongoDB Learner's Journal**  
 This section contains my personal learner's journal for the “Introduction to MongoDB”  NoSQL university module, presented in PowerPoint format. The journal documents three weeks of guided study using the Movies database to illustrate MongoDB concepts. Topics covered include:
@@ -115,5 +115,9 @@ This section contains examples and a dataset for creating documents in MongoDB u
 **05. READ (Querying and Filtering Documents)**  
 This section focuses on reading documents with findOne() and find(), applying comparison operators ($eq, $ne, $lt, $lte, $gte, $in, $nin), logical operators ($or, $nor, $and, $not), and element/type checks ($exists, $type). It demonstrates querying embedded fields ("rating.average"), matching array contents (single-value vs exact array match), using evaluation and pattern operators ($regex, $expr with field-to-field comparisons and conditional logic via $cond), and practical dataset queries (e.g. filtering imported boxOffice data on combined rating/runtime criteria or comparing visitors vs expectedVisitors). These examples build fluency in constructing precise read queries for diverse document shapes.
 
+**06. UPDATE (Modifying Documents)**  
+This section demonstrates updating existing documents and creating new ones conditionally. It imports a users.json dataset, then applies field-level and array-level changes with updateOne() and updateMany(). Covered operators and patterns include $set (add/replace fields and entire embedded arrays), $inc (increment/decrement numeric values), conflict avoidance when multiple operators target the same field, $min, $max, $mul for constrained or multiplicative adjustments, $unset (removing fields), $rename (renaming fields), and upsert to insert when no match is found. Examples show enriching documents with flags (e.g. isSporty), transforming hobby arrays, conditional updates based on embedded field matches, and a multi-step assignment illustrating how successive updateMany() calls evolve a sports collection (team requirements, player counts).
 
+**07. DELETE (Removing Documents and Collections)**  
+This section (parallel in structure to CREATE and UPDATE) focuses on removing data: targeting single documents with deleteOne(), sets of documents via filtered deleteMany(), and using strategic predicates to avoid accidental broad deletions. It highlights patterns for cleaning up data after schema changes (e.g. removing documents missing critical fields), discusses idempotent deletion strategies, and distinguishes between document-level deletions and structural operations like drop() on collections or db.dropDatabase(). It reinforces safe practices (verifying matches with find() before deletion) and addresses implications for embedded relationships or reference integrity.
 
