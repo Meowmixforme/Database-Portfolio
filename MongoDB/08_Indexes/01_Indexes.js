@@ -50,8 +50,14 @@ db.contacts.find({email: "abigail.clark@example.com"}).count() - 2 people with t
 
 // Partial filters
 
+db.contacts.getIndexes()
 
+db.contacts.createIndex({"dob.age": 1}, {partialFilterExpression: {gender: "male"}}) - only ages of males are stored
 
+db.contacts.createIndex({"dob.age2": 1}, {partialFilterExpression: {"dob.age": {$gt: 60}}}) - as an alternative
 
+db.contacts.explain().find({"dob.age": {$gt: 60}}).pretty() - collection scan as only one part is listed
+
+db.contacts.find({"dob.age": {$gt: 60}, gender: "male"}).pretty() - as both parts are listed it returns the correct index scan
 
 
