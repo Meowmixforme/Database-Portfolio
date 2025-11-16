@@ -60,4 +60,30 @@ db.contacts.explain().find({"dob.age": {$gt: 60}}).pretty() - collection scan as
 
 db.contacts.find({"dob.age": {$gt: 60}, gender: "male"}).pretty() - as both parts are listed it returns the correct index scan
 
+db.users.insertMany([{name: "Max", email: "max@test.com"}, {name: "Manuel"}]) - create two documents but onyl one has an email
+
+db.users.createIndex({email: 1}) - create index
+
+db.users.dropIndex({email: 1}) - drop index
+
+db.users.createIndex({email: 1}, {unique: true}) - create a unique index and it fails as Manuel has no email
+
+db.users.createIndex({email: 1}, {unique: true, partialFilterExpression: {email: {$exists: true}}}) - to override the behaviour and allow no email
+
+db.users.insertOne({name: "Anna"}) - I can insert a new user without an email. If i used an email already in there it will fail (max@test.com) 
+
+db.users.find().pretty()
+
+// Time-To-Live Index
+
+db.sessions.insertOne({data: "dfsdfs", createdAt: new Date()}) - uses current timestamp
+
+db.sessions.createIndex({createdAt: 1}) - to create a ttl index
+
+db.sessions.dropIndex({createdAt: 1})
+
+db.sessions.createIndex({createdAt: 1}, {expireAfterSeconds: 10}) - every element will be removed after 10 seconds (only applies to collection when new objects added after applying)
+
+db.sessions.insertOne({data: "dfsdfs", createdAt: new Date()}) - new element and any existing will now delete after 10 seconds
+
 
