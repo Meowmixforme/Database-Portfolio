@@ -86,4 +86,16 @@ db.sessions.createIndex({createdAt: 1}, {expireAfterSeconds: 10}) - every elemen
 
 db.sessions.insertOne({data: "dfsdfs", createdAt: new Date()}) - new element and any existing will now delete after 10 seconds
 
+// Covered queries (very fast)
+
+db.customers.insertMany([{name: "Max", age: 29, salary: 3000}, {name: "Manuel", age: 30, salary: 4000}])
+
+db.customers.createIndex({name: 1})
+
+db.customers.explain("executionStats").find({name: "Max"}) - reqular index query
+
+db.customers.explain("executionStats").find({name: "Max"}, {_id: 0, name: 1}) - covered query (only return fields which are the index fields)
+
+// Using Multi-Key indexes
+
 
