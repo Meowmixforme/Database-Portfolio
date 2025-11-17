@@ -138,3 +138,13 @@ db.products.find({$text: {$search: "\"awesome book\""}}).pretty() - now a result
 
 db.products.find({$text: {$search: "awesome book"}}, {score: {$meta: "textScore"}}).sort({score: {$meta: "textScore"}}).pretty() - get a meta text score and sort results by relevance
 
+db.products.dropIndex("description_text") - drop the existing index by name
+
+db.products.createIndex({title: "text", description: "text"}) - combined text index of both title and description
+
+db.products.insertOne({title: "A Ship", description: "Floats perfectly!"})
+
+db.products.find({$text: {$search: "ship"}}) - searches by title
+
+db.products.find({$text: {$search: "awesome -t-shirt"}}).pretty() - exclude words by using minus in front of the word (-)
+
