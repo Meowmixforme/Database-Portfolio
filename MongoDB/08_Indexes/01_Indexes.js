@@ -98,4 +98,27 @@ db.customers.explain("executionStats").find({name: "Max"}, {_id: 0, name: 1}) - 
 
 // Using Multi-Key indexes
 
+use contactData
+
+db.contacts.drop() - drop the data we imported earlier from file
+
+db.contacts.insertOne({name: "Max", hobbies: ["Cooking", "Sports"], addresses: [{street: "Main Street"}, {street: "Second Street"}]}) - hobbies is an Array
+
+db.contacts.findOne()
+
+db.contacts.createIndex({hobbies: 1})
+
+db.contacts.explain("executionStats").find({hobbies: "Sports"}) - isMultiKey: true (as this is an index on an Array of values)
+
+db.contacts.createIndex({addresses: 1})
+
+db.contacts.explain("executionStats").find({"addresses.street": "Main Street"}) - collection scan because it is a nested document in an array
+
+db.contacts.explain("executionStats").find({addresses: {street: "Main Street"}}) - ixscan as it matches the query (creates plan cache)
+
+db.contacts.explain("executionStats").find({"addresses.street": "Main Street"}) - now the query uses an ixscan as the plan cache recognises it
+
+// Text indexes
+
+
 
