@@ -156,3 +156,23 @@ db.products.createIndex({title: "text", description: "text"}, {default_language:
 
 db.products.find({$text: {$search: "red"}}, {score: {$meta: "textScore"}}).pretty() - weight is now different
 
+mongosh credit-rating.js - file contains a loop to add a million documents to a collection with random numbers
+
+use credit
+
+show collections
+
+db.ratings.countDocuments()
+
+db.ratings.findOne()
+
+db.ratings.createIndex({age: 1})
+
+db.ratings.explain("executionStats").find({age: {$gt: 80}})
+
+db.ratings.dropIndex({age: 1}) - drop index
+
+db.ratings.explain("executionStats").find({age: {$gt: 80}}) - repeat query (it takes much longer without the index)
+
+db.ratings.createIndex({age: 1}, {background: true}) - collection is unlocked, allowing concurrent operations 
+
