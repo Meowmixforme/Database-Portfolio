@@ -148,3 +148,11 @@ db.products.find({$text: {$search: "ship"}}) - searches by title
 
 db.products.find({$text: {$search: "awesome -t-shirt"}}).pretty() - exclude words by using minus in front of the word (-)
 
+db.products.getIndexes()
+
+db.products.dropIndex("title_text_description_text")
+
+db.products.createIndex({title: "text", description: "text"}, {default_language: "english", weights: {title: 1, description: 10}}) - can change to a different language and weighting description to be 10x worth more than title
+
+db.products.find({$text: {$search: "red"}}, {score: {$meta: "textScore"}}).pretty() - weight is now different
+
