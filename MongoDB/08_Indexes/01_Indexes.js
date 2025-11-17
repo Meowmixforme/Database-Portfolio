@@ -120,5 +120,18 @@ db.contacts.explain("executionStats").find({"addresses.street": "Main Street"}) 
 
 // Text indexes
 
+db.products.insertMany([{title: "A Book", description: "This is an awesome book about a young artist"}, {title: "Red T-Shirt", description: "This T-Shirt is red and it's pretty awesome"}])
 
+db.products.find().pretty()
 
+db.products.createIndex({description: "text"}) - text keyword creates a text index
+
+db.products.find({$text: {$search: "awesome"}}).pretty() - may only have 1 text index per collection, therefore description is default (casing not important
+
+db.products.find({$text: {$search: "book"}}).pretty() - only book is returned
+
+db.products.find({$text: {$search: "red book"}}).pretty() - both are returned as both are keywords in each product
+
+db.products.find({$text: {$search: "\"red book\""}}).pretty() - cancel out double quotes and notrhing is returned as it look for exact "red book" as one phrase
+
+db.products.find({$text: {$search: "\"awesome book\""}}).pretty() - now a result is found
