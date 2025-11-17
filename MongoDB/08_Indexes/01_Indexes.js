@@ -135,3 +135,6 @@ db.products.find({$text: {$search: "red book"}}).pretty() - both are returned as
 db.products.find({$text: {$search: "\"red book\""}}).pretty() - cancel out double quotes and notrhing is returned as it look for exact "red book" as one phrase
 
 db.products.find({$text: {$search: "\"awesome book\""}}).pretty() - now a result is found
+
+db.products.find({$text: {$search: "awesome book"}}, {score: {$meta: "textScore"}}).sort({score: {$meta: "textScore"}}).pretty() - get a meta text score and sort results by relevance
+
