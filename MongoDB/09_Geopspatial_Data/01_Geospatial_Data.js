@@ -24,4 +24,20 @@ db.places.insertOne({name: "Lisa & Douglas Goldman Tennis Center", location: {ty
 
 db.places.insertOne({name: "The Painted Ladies", location: {type: "Point", coordinates: [-122.4483471, 37.7622779]}}) - Outside Golden Gate Park
 
+// Draw 4 corners around Golden Gate Park
 
+const p1 = [-122.4547, 37.77473]
+
+const p2 = [-122.45303, 37.76641]
+
+const p3 = [-122.51026, 37.76411]
+
+const p4 = [-122.51088, 37.77131]
+
+db.places.find({location: {$geoWithin: {$geometry: {type: "Polygon", coordinates: [[p1, p2, p3, p4, p1]]}}}}).pretty() - find all places inside Golden Gate Park by drawing a polygon using the four corners (The Painted Ladies aren't found as they reside outside of the polygon)
+
+db.areas.insertOne({name: "Golden Gate Park", area: {type: "Polygon", coordinates: [[p1, p2, p3, p4, p1]]}}) - store polygon in  the database
+
+db.areas.createIndex({area: "2dsphere"})
+
+db.areas.find({area: {$geoIntersects: {$geometry: {type: "Point", coordinates: [-122.49089, 37.76992]}}}}).pretty() - find out if a user is inside a specific area (intersects with a point)
