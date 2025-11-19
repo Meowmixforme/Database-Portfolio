@@ -53,3 +53,47 @@ db.places.updateOne({_id: ObjectId('691c11936aeaf69390cebea4')}, {$set: {locatio
 db.places.find({location: {$geoWithin: {$centerSphere: [[-122.46203, 37.77286], 1 / 6378.1]}}}).pretty() - now three are found
 
 // Assignment
+
+//Task 1
+
+use newplaces
+
+db.places.insertOne({name: "Beergarden", loc: {type: "Point", coordinates: [11.59228, 48.15203]}}) - add Beergarden
+
+db.places.insertOne({name: "Oktoberfest", loc: {type: "Point", coordinates: [11.54965, 48.13203]}}) - add Oktoberfest
+
+db.places.insertOne({name: "My old Place", loc: {type: "Point", coordinates: [11.56934, 48.15105]}}) - a random house in Munich
+
+const myLocation = [11.59475, 48.14235]
+
+db.places.createIndex({loc: "2dsphere"})
+
+db.places.find({loc: {$near: {$geometry: {type: "Point", coordinates: myLocation}}}}).pretty() - find places near my location (ordered by proximity)
+
+// Task 2
+
+db.places.find({loc: {$near: {$geometry: {type: "Point", coordinates: myLocation}, $minDistance: 1000, $maxDistance: 2000}}}).pretty() - all points within min 1000 meters and max distance 2000 meters (Beergarden)
+
+db.places.find({loc: {$near: {$geometry: {type: "Point", coordinates: myLocation}, $minDistance: 2000, $maxDistance: 3000}}}).pretty() - all points within min 2000 meters and max distance 3000 meters (My old Place)
+
+// Task 3
+
+const p1 = [11.6097, 48.14522]
+
+const p2 = [11.57142, 48.15416]
+
+const p3 = [11.6, 48.15954]
+
+const polygonArea = [[p1, p2, p3, p1]]
+
+const polygonObject = {type: "Polygon", coordinates: polygonArea}
+
+db.places.find({loc: {$geoWithin: {$geometry: polygonObject}}}).pretty() - all locations within the polygon (Beergarden)
+
+// Task 4
+
+db.areas.insertOne({name: "Free Time Well-Being Area", area: polygonObject}) - store area
+
+// Task 5
+
+db.areas.find({area: {$geoIntersects: {$geometry: {type: "Point", coordinates: [11.59228, 48.15203]}}}}).pretty() - which areas in the collection contain the point
