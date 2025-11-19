@@ -41,3 +41,15 @@ db.areas.insertOne({name: "Golden Gate Park", area: {type: "Polygon", coordinate
 db.areas.createIndex({area: "2dsphere"})
 
 db.areas.find({area: {$geoIntersects: {$geometry: {type: "Point", coordinates: [-122.49089, 37.76992]}}}}).pretty() - find out if a user is inside a specific area (intersects with a point)
+
+// Finding locations within a certain radius
+
+db.places.find({location: {$geoWithin: {$centerSphere: [[-122.46203, 37.77286], 1 / 6378.1]}}}).pretty() - search for points within the radius (miles to km conversion) two are found
+
+db.places.find().pretty()
+
+db.places.updateOne({_id: ObjectId('691c11936aeaf69390cebea4')}, {$set: {location: {type: "Point", coordinates: [-122.46636, 37.77014]}}}) - update location for 'California Academy of Sciences' to be the exact location
+
+db.places.find({location: {$geoWithin: {$centerSphere: [[-122.46203, 37.77286], 1 / 6378.1]}}}).pretty() - now three are found
+
+// Assignment
