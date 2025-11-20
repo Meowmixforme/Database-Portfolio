@@ -30,5 +30,47 @@ db.persons.aggregate([
 
 // Assignment
 
+db.persons.aggregate([
+    { $match: { 'dob.age': { $gt: 50 } } },
+    {
+      $group: {
+        _id: { gender: '$gender' },
+        numPersons: { $sum: 1 },
+        avgAge: { $avg: '$dob.age' }
+      }
+    },
+    { $sort: { numPersons: -1 } }
+  ]).pretty();
 
+// $project
+
+db.persons.aggregate([
+    {
+      $project: {
+        _id: 0,
+        gender: 1,
+        fullName: {
+          $concat: [
+            { $toUpper: { $substrCP: ['$name.first', 0, 1] } },
+            {
+              $substrCP: [
+                '$name.first',
+                1,
+                { $subtract: [{ $strLenCP: '$name.first' }, 1] }
+              ]
+            },
+            ' ',
+            { $toUpper: { $substrCP: ['$name.last', 0, 1] } },
+            {
+              $substrCP: [
+                '$name.last',
+                1,
+                { $subtract: [{ $strLenCP: '$name.last' }, 1] }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]).pretty(); - create new fiels fullname using first and lastname
 
