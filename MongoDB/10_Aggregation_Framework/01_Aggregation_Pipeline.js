@@ -204,7 +204,7 @@ db.persons.aggregate([
     }
   ]).pretty();
 
-// $isoWeekYear
+// $isoWeekYear (group by year)
 
 db.persons.aggregate([
     {
@@ -270,4 +270,28 @@ db.persons.aggregate([
     { $group: { _id: { birthYear: { $isoWeekYear: "$birthdate" } }, numPersons: { $sum: 1 } } },
     { $sort: { numPersons: -1 } }
   ]).pretty();
+
+// Pushing elements into newly created Arrays
+
+mongoimport --db=persons --collection=friends --file=array-data.json --jsonArray
+
+db.friends.aggregate([
+	{$group: { _id: {age: "$age"}, allHobbies: {$push: "$hobbies"}}}
+]).pretty() 
+
+// $unwind (each hobby is in a seperate document)
+
+db.friends.aggregate([
+    { $unwind: "$hobbies" }, 
+    { $group: { _id: { age: "$age" }, allHobbies: { $push: "$hobbies" } } }
+  ]).pretty();
+
+// Eliminate duplicate values
+
+db.friends.aggregate([
+    { $unwind: "$hobbies" }, 
+    { $group: { _id: { age: "$age" }, allHobbies: { $addToSet: "$hobbies" } } }
+  ]).pretty();
+
+
 
