@@ -1,2 +1,14 @@
-// Numeric Data
+// Numeric Data - mongosh is based on javascript (default is double)
+
+// int32
+
+db.people.insertOne({name: "James", age: NumberInt(43)}) - forced as int
+
+db.people.findOne()
+
+// int64
+
+
+
+
 
